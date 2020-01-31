@@ -6,7 +6,7 @@ class Nav extends React.Component{
         return(
             <>
             <Link className='Nav' to='/'>Login</Link>
-            <Link className='Nav' to='/CreateAccount'>Create Account</Link>
+            <Link className='Nav' to='/create-account'>Create Account</Link>
             </>
         );
     }

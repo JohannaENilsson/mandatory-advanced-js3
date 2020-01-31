@@ -17,8 +17,8 @@ export function GetAxiosTodo(){
 }
 
 
-export default function PostAxiosRegister(){
-    return axios.post(`${APIURL}register`) // Måste skicka med email och lösenord
+export function PostAxiosRegister(email, password){
+    return axios.post(`${APIURL}register`, {email, password}) // Måste skicka med email och lösenord
     .then(resp => {
         console.log(resp);
         console.log(resp.status); 

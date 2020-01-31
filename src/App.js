@@ -16,8 +16,8 @@ class App extends React.Component {
         </header>
 
         <Route exact path='/' component={Login} />
-        <Route path='/CreateAccount' component={CreateAccount} />
-        
+        <Route path='/create-account' component={CreateAccount} />
+
       </Router>
 
       
