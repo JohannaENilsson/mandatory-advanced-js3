@@ -1,13 +1,14 @@
-import React from "react";
-import Form from "./Form";
-import { PostAxiosRegister } from "./Axios";
+import React from 'react';
+import Form from './Form';
+import { PostAxiosRegister } from './Axios';
+import { Redirect } from 'react-router-dom';
 
 class CreateAccount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,11 +33,11 @@ class CreateAccount extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className='container'>
         <Form
           handleSubmit={this.handleSubmit}
           handleInput={this.handleInput}
-          submitButtonText="Register"
+          submitButtonText='Sign up'
         />
       </div>
     );

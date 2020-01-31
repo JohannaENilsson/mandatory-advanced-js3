@@ -1,28 +1,23 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
 import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
 import Nav from './components/Nav';
-import { Route, BrowserRouter as Router } from "react-router-dom";
-
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 class App extends React.Component {
   render() {
     return (
-    <div className="App">
-      <Router>
-        <header>
-          <Nav />
-        </header>
+      <div className='App'>
+        <Router>
+          <header>
+            <Nav />
+          </header>
 
-        <Route exact path='/' component={Login} />
-        <Route path='/create-account' component={CreateAccount} />
-
-      </Router>
-
-      
-      
-    </div>
+          <Route exact path='/' component={Login} />
+          <Route path='/create-account' component={CreateAccount} />
+        </Router>
+      </div>
     );
   }
 }
