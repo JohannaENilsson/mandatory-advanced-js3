@@ -25,10 +25,19 @@ class Login extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let email = this.state.email;
-    let password = this.state.password;
+    let {email, password} = this.state;
+
     console.log(email, password);
-    PostAxiosAuth(email, password);
+    PostAxiosAuth(email, password)
+    .then(resp => {
+      console.log(resp);
+      console.log(resp.status); 
+
+  })
+  .catch(error => {
+      console.log(error);
+      return <p>'Could NOT Auth'</p>;
+  });
   }
 
   render() {

@@ -26,11 +26,19 @@ class CreateAccount extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let email = this.state.email;
-    let password = this.state.password;
+    let { email, password } = this.state;
 
     console.log(email, password);
-    PostAxiosRegister(email, password);
+    PostAxiosRegister(email, password)
+      .then(resp => {
+        console.log(resp);
+        console.log(resp.status);
+        // return resp;
+      })
+      .catch(error => {
+        console.log(error);
+        return 'Could NOT register';
+      });
   }
 
   render() {

@@ -18,43 +18,17 @@ export function GetAxiosTodo(){
 
 
 export function PostAxiosRegister(email, password){
-    return axios.post(`${APIURL}register`, {email, password}) 
-    .then(resp => {
-        console.log(resp);
-        console.log(resp.status); 
-        // return resp;
-    })
-    .catch(error => {
-        console.log(error);
-        return 'Could NOT register';
-    });
+    return axios.post(`${APIURL}register`, {email, password});
 }
 
 
 export function PostAxiosAuth(email, password){
     return axios.post(`${APIURL}auth`, {email, password})
-    .then(resp => {
-        console.log(resp);
-        console.log(resp.status); 
-        // return resp;
-    })
-    .catch(error => {
-        console.log(error);
-        return <p>'Could NOT Auth'</p>;
-    });
+    ;
 }
 
-export function PostAxiosTodo(){
-    return axios.post(`${APIURL}todos`) // Måste skicka med ett object
-    .then(resp => {
-        console.log(resp);
-        console.log(resp.status); 
-        // return resp;
-    })
-    .catch(error => {
-        console.log(error);
-        return 'Could NOT post Todo';
-    });
+export function PostAxiosTodo(todo){
+    return axios.post(`${APIURL}todos`, {todo}); // Måste skicka med ett object
 }
 
 export function DeleteAxiosTodo(id){
