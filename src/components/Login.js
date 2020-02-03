@@ -3,16 +3,28 @@ import Form from './Form';
 import { PostAxiosAuth } from './Axios';
 import { Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { token$, updateToken } from './Store';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      token: token$.value,
+
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  componentDidMount(){
+    this.subscription = token$.subscribe( token => {
+      this.setState({ token });
+    });
+  }
+
+  componentWillUnmount(){
+    this.subscription.unsubscribe();
   }
 
   handleInput(e) {
@@ -30,8 +42,11 @@ class Login extends React.Component {
     console.log(email, password);
     PostAxiosAuth(email, password)
     .then(resp => {
+      
       console.log(resp);
       console.log(resp.status); 
+      console.log(resp.data.token);
+      updateToken(resp.data.token);
 
   })
   .catch(error => {
@@ -41,6 +56,12 @@ class Login extends React.Component {
   }
 
   render() {
+
+    if(this.state.token){
+      return <Redirect to="/todos" />
+    }
+
+    
     return (
       <>
         <Helmet>
