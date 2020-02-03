@@ -31,7 +31,7 @@ class Login extends React.Component {
     const target = e.target;
     const name = target.name;
     const value = target.value;
-    console.log(name, value);
+    // console.log(name, value);
     this.setState({ [name]: value });
   }
 
@@ -39,13 +39,12 @@ class Login extends React.Component {
     e.preventDefault();
     let {email, password} = this.state;
 
-    console.log(email, password);
     PostAxiosAuth(email, password)
     .then(resp => {
       
       console.log(resp);
       console.log(resp.status); 
-      console.log(resp.data.token);
+      console.log('Token ', resp.data.token);
       updateToken(resp.data.token);
 
   })
