@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './Form';
 import { PostAxiosAuth } from './Axios';
 import { Redirect } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 class Login extends React.Component {
   constructor(props) {
@@ -32,13 +33,18 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className='container'>
-        <Form
-          handleSubmit={this.handleSubmit}
-          handleInput={this.handleInput}
-          submitButtonText='Login'
-        />
-      </div>
+      <>
+        <Helmet>
+          <title>Login</title>
+        </Helmet>
+        <div className='container'>
+          <Form
+            handleSubmit={this.handleSubmit}
+            handleInput={this.handleInput}
+            submitButtonText='Login'
+          />
+        </div>
+      </>
     );
   }
 }

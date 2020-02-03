@@ -1,8 +1,10 @@
 import React from 'react';
-import './App.css';
 import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
 import Nav from './components/Nav';
+import Todos from './components/Todos';
+import './App.css';
+
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 class App extends React.Component {
@@ -16,6 +18,7 @@ class App extends React.Component {
 
           <Route exact path='/' component={Login} />
           <Route path='/create-account' component={CreateAccount} />
+          <Route path='/todos' component={Todos} />
         </Router>
       </div>
     );

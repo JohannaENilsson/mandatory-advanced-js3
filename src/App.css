@@ -7,7 +7,7 @@ header{
   height: 70px;
 }
 
-.Nav {
+.nav {
   background-color: white;
   padding: 10px;
   text-decoration: none;
@@ -15,7 +15,6 @@ header{
   line-height: 70px;
   border-radius: 6px;
 }
-
 
 
 .container {
@@ -27,6 +26,9 @@ header{
 }
 
 form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: darkgray;
   text-align: right;
   border-radius: 6px;
