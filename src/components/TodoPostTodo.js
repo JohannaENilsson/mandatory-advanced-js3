@@ -2,7 +2,7 @@ import React from 'react';
 import TodoForm from './TodoForm';
 import { PostAxiosTodo } from './Axios';
 
-export default class TodoPutTodo extends React.Component {
+export default class TodoPostTodo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,6 +32,7 @@ export default class TodoPutTodo extends React.Component {
   }
 
   render() {
+
     return (
       <div>
         <TodoForm
