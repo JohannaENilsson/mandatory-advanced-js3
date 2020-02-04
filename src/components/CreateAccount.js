@@ -11,7 +11,7 @@ class CreateAccount extends React.Component {
     this.state = {
       email: '',
       password: '',
-      error: false, 
+      err: false, 
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,7 +36,8 @@ class CreateAccount extends React.Component {
       })
       .catch(error => {
         console.log(error);
-        this.setState({ error: true });
+        console.log(error.message);
+        this.setState({ err: true });
       });
   }
 
@@ -52,7 +53,7 @@ class CreateAccount extends React.Component {
             handleInput={this.handleInput}
             submitButtonText='Sign up'
           />
-          {this.state.error && (
+          {this.state.err && (
             <p style={{ color: 'red' }} className='error'>
               Password must be at least 5 characters long.
             </p>

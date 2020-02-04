@@ -2,18 +2,19 @@ import React from 'react';
 import Logout from './Logout.js';
 import TodoForm from './TodoForm';
 import Header from './Header.js';
+import CreateTodoList from './CreateTodoList';
 
 import { GetAxiosTodo, PostAxiosTodo } from './Axios';
 import { Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { token$, updateToken } from './Store';
 
-
 class Todos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todo: '',
+      content: '',
+      todoList: [],
       token: token$.value
     };
 
@@ -25,6 +26,15 @@ class Todos extends React.Component {
     this.subscription = token$.subscribe(token => {
       this.setState({ token });
     });
+
+    GetAxiosTodo(this.state.token)
+      .then(resp => {
+        this.setState({todoList: resp.data.todos})
+        console.log(resp.status);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   componentWillUnmount() {
@@ -32,17 +42,19 @@ class Todos extends React.Component {
   }
 
   handleInput(e) {
-    console.log(e.target.value);
-    this.setState({ todo: e.target.value });
+    // console.log(e.target.value);
+    this.setState({ content: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     console.log('Btn was clicked');
+    let todo = {content: this.state.content};
 
-    PostAxiosTodo(this.state.todo)
+    PostAxiosTodo(todo)
       .then(resp => {
         console.log(resp.status);
+        console.log(resp.data);
       })
       .catch(err => {
         console.log(err);
@@ -50,20 +62,21 @@ class Todos extends React.Component {
   }
 
   render() {
-    console.log(this.state.token);
+    console.log(this.state.todoList);
     return (
       <>
         <Helmet>
           <title>Todos</title>
         </Helmet>
-        <Header token={this.state.token}/>
+        <Header token={this.state.token} />
         <div className='container'>
-          
           <TodoForm
             handleInput={this.handleInput}
             handleSubmit={this.handleSubmit}
             ButtonText='Add todo'
           />
+
+          <CreateTodoList todoList={this.state.todoList} />
 
           <Logout />
         </div>

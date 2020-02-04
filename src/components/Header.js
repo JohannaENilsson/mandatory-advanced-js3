@@ -12,13 +12,13 @@ class Header extends React.Component {
   componentDidMount() {
     if (this.props.token) {
       let decoded = jwt.decode(this.props.token);
-      console.log(decoded);
+      // console.log(decoded);
       this.setState({email: decoded.email});
     }
   }
 
   render() {
-    console.log(this.props.token);
+    // console.log(this.props.token);
 
     return <h2>Welcome {this.state.email}</h2>;
   }
