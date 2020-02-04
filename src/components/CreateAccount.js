@@ -10,7 +10,8 @@ class CreateAccount extends React.Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      error: false, 
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,7 +21,6 @@ class CreateAccount extends React.Component {
     const target = e.target;
     const name = target.name;
     const value = target.value;
-    console.log(name, value);
     this.setState({ [name]: value });
   }
 
@@ -31,13 +31,12 @@ class CreateAccount extends React.Component {
     console.log(email, password);
     PostAxiosRegister(email, password)
       .then(resp => {
-        console.log(resp);
         console.log(resp.status);
-        // return resp;
+ 
       })
       .catch(error => {
         console.log(error);
-        return 'Could NOT register';
+        this.setState({ error: true });
       });
   }
 
@@ -53,6 +52,11 @@ class CreateAccount extends React.Component {
             handleInput={this.handleInput}
             submitButtonText='Sign up'
           />
+          {this.state.error && (
+            <p style={{ color: 'red' }} className='error'>
+              Password must be at least 5 characters long.
+            </p>
+          )}
         </div>
       </>
     );
