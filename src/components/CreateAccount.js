@@ -1,9 +1,10 @@
 import React from 'react';
 import Form from './Form';
 
-import { PostAxiosRegister } from './Axios';
+import { PostAxiosRegister, PostAxiosAuth } from './Axios';
 import { Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { token$, updateToken } from './Store';
 
 class CreateAccount extends React.Component {
   constructor(props) {
@@ -11,10 +12,21 @@ class CreateAccount extends React.Component {
     this.state = {
       email: '',
       password: '',
-      err: false, 
+      token: token$.value,
+      error: false, 
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.subscription = token$.subscribe(token => {
+      this.setState({ token });
+    });
+  }
+
+  componentWillUnmount() {
+    this.subscription.unsubscribe();
   }
 
   handleInput(e) {
@@ -32,16 +44,27 @@ class CreateAccount extends React.Component {
     PostAxiosRegister(email, password)
       .then(resp => {
         console.log(resp.status);
- 
+        PostAxiosAuth(email, password)
+          .then(resp => {
+            console.log(resp.status);
+            updateToken(resp.data.token);
+          })
+          .catch(error => {
+            console.log(error);
+            return this.setState({ error: true });
+          });
       })
       .catch(error => {
         console.log(error);
         console.log(error.message);
-        this.setState({ err: true });
+        this.setState({ error: true });
       });
   }
 
   render() {
+    if (this.state.token) {
+      return <Redirect to='/todos' />;
+    }
     return (
       <>
         <Helmet>
@@ -53,9 +76,9 @@ class CreateAccount extends React.Component {
             handleInput={this.handleInput}
             submitButtonText='Sign up'
           />
-          {this.state.err && (
+          {this.state.error && (
             <p style={{ color: 'red' }} className='error'>
-              Password must be at least 5 characters long.
+              Something went wrong.
             </p>
           )}
         </div>

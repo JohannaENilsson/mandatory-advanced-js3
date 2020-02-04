@@ -7,12 +7,12 @@ export default function CreateTodoList(props) {
       <li key={todo.id}>
         {todo.content}
         <button onClick={() => DeleteAxiosTodo(todo.id)
-        .then(resp => {
-          console.log(resp.status);
-        })
-        .catch(error => {
-          console.log(error);
-        })
+          .then(resp => {
+            console.log(resp.status);
+          })
+          .catch(error => {
+            console.log(error);
+          })
         }>X</button>
       </li>
     );
