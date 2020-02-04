@@ -1,7 +1,7 @@
 import React from 'react';
 import jwt from 'jsonwebtoken';
 
-class Header extends React.Component {
+class TodoHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,4 +24,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default TodoHeader;

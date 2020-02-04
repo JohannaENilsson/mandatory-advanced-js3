@@ -1,7 +1,7 @@
 import React from 'react';
 import { DeleteAxiosTodo } from './Axios';
 
-export default function CreateTodoList(props) {
+export default function TodoCreateList(props) {
   const todoList = props.todoList.map(todo => {
     return (
       <li key={todo.id}>

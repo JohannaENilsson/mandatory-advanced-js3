@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { token$, updateToken } from './Store';
 
-class Logout extends React.Component {
+class TodoLogout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,4 +35,4 @@ class Logout extends React.Component {
   }
 }
 
-export default Logout;
+export default TodoLogout;
