@@ -13,7 +13,6 @@ class Todos extends React.Component {
     super(props);
     this.state = {
       token: token$.value,
-      loading: true,
       renderAgain: false
     };
 
@@ -22,7 +21,7 @@ class Todos extends React.Component {
 
   componentDidMount() {
     this.subscription = token$.subscribe(token => {
-      this.setState({ token, loading: false });
+      this.setState({ token });
     });
   }
 
@@ -47,9 +46,7 @@ class Todos extends React.Component {
 
         <div className='container'>
           <TodoPostTodo parentCallback={this.passingData} />
-          {this.state.loading && (
-            <div className='loading message'> Loading... </div>
-          )}
+          
           <TodosRenderList
             token={this.state.token}
             renderAgain={this.state.renderAgain}

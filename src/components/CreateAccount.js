@@ -51,12 +51,13 @@ class CreateAccount extends React.Component {
           })
           .catch(error => {
             console.log(error);
+            console.log(error.status);
             return this.setState({ error: true });
           });
       })
       .catch(error => {
         console.log(error);
-        console.log(error.message);
+        console.log(error.response);
         this.setState({ error: true });
       });
   }
