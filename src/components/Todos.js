@@ -28,8 +28,6 @@ class Todos extends React.Component {
   }
 
   render() {
-    console.log(this.state.token);
-    console.log('loading', this.state.loading);
     return (
       <>
         <Helmet>
