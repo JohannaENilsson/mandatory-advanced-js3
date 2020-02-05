@@ -4,8 +4,8 @@ import { DeleteAxiosTodo } from './Axios';
 export default function TodoCreateList(props) {
   const todoList = props.todoList.map(todo => {
     return (
-      <li key={todo.id}>
-        {todo.content}
+      <div key={todo.id} className='todo'>
+        <span>{todo.content} </span>
         <button onClick={() => DeleteAxiosTodo(todo.id)
           .then(resp => {
             console.log(resp.status);
@@ -14,13 +14,13 @@ export default function TodoCreateList(props) {
             console.log(error);
           })
         }>X</button>
-      </li>
+      </div>
     );
   });
 
   return (
-    <div>
-      <ul>{todoList}</ul>
+    <div className='todoContainer'>
+      {todoList}
     </div>
   );
 }

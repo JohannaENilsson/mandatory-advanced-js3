@@ -13,7 +13,7 @@ class CreateAccount extends React.Component {
       email: '',
       password: '',
       token: token$.value,
-      error: false, 
+      error: false
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -76,11 +76,7 @@ class CreateAccount extends React.Component {
             handleInput={this.handleInput}
             submitButtonText='Sign up'
           />
-          {this.state.error && (
-            <p style={{ color: 'red' }} className='error'>
-              Something went wrong.
-            </p>
-          )}
+          {this.state.error && <div className='error message'>Something went wrong.</div>}
         </div>
       </>
     );

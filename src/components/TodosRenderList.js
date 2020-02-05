@@ -30,8 +30,9 @@ class TodosRenderList extends React.Component {
 
     return (
       <>
-        {this.state.error && (<p style={{ color: 'red'}} className='error'> Could not get your todos </p> )}
-        {this.state.todoList.length === 0 && (<p style={{ color: 'green'}} className='success'> You have no todos</p> )}
+        {this.state.error && (<div className='error message '> Could not get your todos </div> )}
+        {this.state.todoList.length === 0 && (<div className='success message '> You have no todos!</div> )}
+        {this.state.todoList.length > 5 && (<div className='error message '> Stop procrastinating.... Start do your todos!</div> )}
         <TodoCreateList todoList={this.state.todoList} />
       </>
     );

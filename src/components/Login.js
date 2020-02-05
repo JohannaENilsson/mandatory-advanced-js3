@@ -45,7 +45,6 @@ class Login extends React.Component {
         console.log(resp.status);
         console.log('Token ', resp.data.token);
         updateToken(resp.data.token);
-     
       })
       .catch(error => {
         console.log(error);
@@ -71,9 +70,7 @@ class Login extends React.Component {
           />
 
           {this.state.error && (
-            <p style={{ color: 'red' }} className='error'>
-              Invalid email or password!
-            </p>
+            <div className='error message '>Invalid email or password!</div>
           )}
         </div>
       </>
