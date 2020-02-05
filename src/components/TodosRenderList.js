@@ -12,7 +12,6 @@ class TodosRenderList extends React.Component {
 
     this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
- 
   }
 
   componentDidMount() {
@@ -41,19 +40,17 @@ class TodosRenderList extends React.Component {
       });
   }
 
-  componentDidUpdate(prevProps){
-    if(this.props.renderAgain !== prevProps.renderAgain){
+  componentDidUpdate(prevProps) {
+    if (this.props.renderAgain !== prevProps.renderAgain) {
       this.handleUpdate();
-    } 
+    }
   }
-
 
   render() {
     console.log(this.state.todoList);
     console.log(this.state.todoList.length);
     // console.log(this.state.error);
 
-   
     return (
       <>
         {this.state.error && (

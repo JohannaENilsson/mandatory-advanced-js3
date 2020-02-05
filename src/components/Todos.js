@@ -14,7 +14,7 @@ class Todos extends React.Component {
     this.state = {
       token: token$.value,
       loading: true,
-      renderAgain: false,
+      renderAgain: false
     };
 
     this.passingData = this.passingData.bind(this);
@@ -29,12 +29,12 @@ class Todos extends React.Component {
   componentWillUnmount() {
     this.subscription.unsubscribe();
   }
-  passingData(childData){
-
-      console.log('I got data ', childData);
-      this.setState({renderAgain: true});
-    
-
+  passingData(childData) {
+    console.log('I got data ', childData);
+    this.setState({ renderAgain: true });
+    if (this.state.renderAgain) {
+      this.setState({ renderAgain: false });
+    }
   }
 
   render() {
@@ -44,15 +44,17 @@ class Todos extends React.Component {
           <title>Todos</title>
         </Helmet>
         <TodoHeader token={this.state.token} />
-        
-        <div className='container'>
-        
-          <TodoPostTodo parentCallback = {this.passingData} />
-          {this.state.loading  && (<div className='loading message'> Loading... </div> )}
-          <TodosRenderList  token={this.state.token} renderAgain={this.state.renderAgain}/>
 
+        <div className='container'>
+          <TodoPostTodo parentCallback={this.passingData} />
+          {this.state.loading && (
+            <div className='loading message'> Loading... </div>
+          )}
+          <TodosRenderList
+            token={this.state.token}
+            renderAgain={this.state.renderAgain}
+          />
         </div>
-        
       </>
     );
   }

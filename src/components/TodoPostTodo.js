@@ -25,8 +25,8 @@ export default class TodoPostTodo extends React.Component {
       .then(resp => {
         console.log(resp.status);
         console.log(resp.data);
-
         this.props.parentCallback(resp);
+        this.setState({ content: '' });
       })
       .catch(err => {
         console.log(err);
@@ -40,6 +40,7 @@ export default class TodoPostTodo extends React.Component {
           handleInput={this.handleInput}
           handleSubmit={this.handleSubmit}
           ButtonText='Add todo'
+          content={this.state.content}
         />
       </div>
     );

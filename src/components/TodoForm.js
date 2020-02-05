@@ -9,7 +9,7 @@ export default function TodoForm(props) {
           type='text'
           name='text'
           min='5'
-          value={props.todo}
+          value={props.content}
           onChange={props.handleInput}
         />
       </div>
