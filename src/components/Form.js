@@ -4,8 +4,9 @@ export default function Form(props) {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <span>Email: </span>
+        <label htmlFor='email'>Email: </label>
         <input
+          id='email'
           type='email'
           name='email'
           value={props.email}
@@ -13,8 +14,9 @@ export default function Form(props) {
         />
       </div>
       <div>
-        <span>Password: </span>
+        <label htmlFor='password'>Password: </label>
         <input
+          id='password'
           type='password'
           name='password'
           min='5'
@@ -23,7 +25,7 @@ export default function Form(props) {
         />
       </div>
       <div>
-        <input type='submit' value={props.submitButtonText} />
+        <button type='submit'>{props.submitButtonText}</button>
       </div>
     </form>
   );

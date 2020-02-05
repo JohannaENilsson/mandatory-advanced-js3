@@ -20,7 +20,7 @@ class TodoHeader extends React.Component {
   render() {
     return (
       <>
-        <h2>Welcome {this.state.email}</h2>
+        <h1>Welcome {this.state.email}</h1>
         <TodoLogout />
       </>
     );

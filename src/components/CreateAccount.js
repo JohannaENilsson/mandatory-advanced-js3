@@ -57,7 +57,7 @@ class CreateAccount extends React.Component {
       })
       .catch(error => {
         console.log(error);
-        console.log(error.response);
+        console.log(error.response); //////////////////////
         this.setState({ error: true });
       });
   }

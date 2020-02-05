@@ -4,17 +4,18 @@ export default function TodoForm(props) {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <span>What todo: </span>
+        <label htmlFor='todo'>What todo: </label>
         <textarea
+          id='todo'
           type='text'
           name='text'
-          min='5'
+          min='1'
           value={props.content}
           onChange={props.handleInput}
         />
       </div>
       <div>
-        <input type='submit' value={props.ButtonText} />
+        <button  type='submit' htmlFor='add todo'>Add todo</button>
       </div>
     </form>
   );

@@ -39,7 +39,7 @@ export default class TodoPostTodo extends React.Component {
         <TodoForm
           handleInput={this.handleInput}
           handleSubmit={this.handleSubmit}
-          ButtonText='Add todo'
+          // ButtonText='Add todo'
           content={this.state.content}
         />
       </div>
