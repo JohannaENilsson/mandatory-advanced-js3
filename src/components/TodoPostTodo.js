@@ -25,6 +25,8 @@ export default class TodoPostTodo extends React.Component {
       .then(resp => {
         console.log(resp.status);
         console.log(resp.data);
+
+        this.props.parentCallback(resp);
       })
       .catch(err => {
         console.log(err);
@@ -32,7 +34,6 @@ export default class TodoPostTodo extends React.Component {
   }
 
   render() {
-
     return (
       <div>
         <TodoForm
