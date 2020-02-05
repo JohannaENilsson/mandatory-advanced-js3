@@ -6,7 +6,8 @@ class TodosRenderList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todoList: []
+      todoList: [],
+      error: false,
     };
   }
 
@@ -18,15 +19,19 @@ class TodosRenderList extends React.Component {
       })
       .catch(error => {
         console.log(error);
+        this.setState( {error: true} );
       });
   }
 
   render() {
     console.log(this.state.todoList);
+    console.log(this.state.todoList.length);
+    console.log(this.state.error);
 
     return (
       <>
-      
+        {this.state.error && (<p style={{ color: 'red'}} className='error'> Could not get your todos </p> )}
+        {this.state.todoList.length === 0 && (<p style={{ color: 'green'}} className='success'> You have no todos</p> )}
         <TodoCreateList todoList={this.state.todoList} />
       </>
     );
