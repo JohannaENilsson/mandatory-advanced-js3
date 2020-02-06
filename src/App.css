@@ -18,13 +18,10 @@ header{
 
 
 .container {
-  /* background-color: lightgray; */
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   padding: 20px;
-  /* height: 50vh; */
 }
 
 form {
@@ -46,12 +43,11 @@ input {
   border-radius: 3px;
   height: 25px;
   border: none;
+  margin-left: 3px;
 }
 
-textarea {
-    border-radius: 3px;
-    height: 50px;
-    border: none;
+button {
+  border-radius: 3px;
 }
 
 .loading {
@@ -64,7 +60,6 @@ textarea {
 
 .success {
   color: green;
- 
 }
 
 .message {
@@ -75,7 +70,8 @@ textarea {
 .todoContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: space-around;
   padding: 10px;
 }

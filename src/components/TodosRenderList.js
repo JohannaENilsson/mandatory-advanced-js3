@@ -8,7 +8,7 @@ class TodosRenderList extends React.Component {
     this.state = {
       todoList: [],
       error: false,
-      loading: true,
+      loading: true
     };
 
     this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
@@ -51,28 +51,45 @@ class TodosRenderList extends React.Component {
     console.log(this.state.todoList);
     console.log(this.state.todoList.length);
     // console.log(this.state.error);
-let msgDoingTodos = '';
+    let msgDoingTodos = '';
 
-    if(this.state.loading){
-      msgDoingTodos =  <div className='loading message'> Loading... </div>
+    if (this.state.loading) {
+      msgDoingTodos = <div className='loading message'> Loading... </div>;
     }
 
-    if(this.state.todoList.length > 7 && this.state.error === false && this.state.loading === false){
-      msgDoingTodos =  <div className='error message '>
-      Stop procrastinating.... Start do your todos!
-    </div>
+    if (
+      this.state.todoList.length > 7 &&
+      this.state.error === false &&
+      this.state.loading === false
+    ) {
+      msgDoingTodos = (
+        <div className='error message '>
+          Stop procrastinating.... Start do your todos!
+        </div>
+      );
     }
-    if(this.state.todoList.length === 0 && this.state.error === false && this.state.loading === false){
-      msgDoingTodos =  <div className='success message '> You have no todos!</div>
+    if (
+      this.state.todoList.length === 0 &&
+      this.state.error === false &&
+      this.state.loading === false
+    ) {
+      msgDoingTodos = (
+        <div className='success message '> You have no todos!</div>
+      );
     }
 
-    if( this.state.error === true && this.state.loading === false){
-      msgDoingTodos =  <div className='error message '> Could not get your todos. Try sign in again. </div>
+    if (this.state.error === true && this.state.loading === false) {
+      msgDoingTodos = (
+        <div className='error message '>
+          {' '}
+          Could not get your todos. Try sign in again.{' '}
+        </div>
+      );
     }
 
     return (
       <>
-                {msgDoingTodos}
+        {msgDoingTodos}
         <TodoCreateList
           todoList={this.state.todoList}
           handleDeleteTodo={this.handleDeleteTodo}

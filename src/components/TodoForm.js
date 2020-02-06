@@ -6,7 +6,7 @@ export default function TodoForm(props) {
       <div>
         <label>
           What todo:
-          <textarea
+          <input
             id='todo'
             type='text'
             name='text'
