@@ -13,7 +13,7 @@ class Login extends React.Component {
       email: '',
       password: '',
       token: token$.value,
-      error: false
+      error: null
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,19 +42,31 @@ class Login extends React.Component {
 
     PostAxiosAuth(email, password)
       .then(resp => {
-        console.log(resp.status);
-        console.log('Token ', resp.data.token);
         updateToken(resp.data.token);
       })
       .catch(error => {
-        console.log(error);
-        return this.setState({ error: true });
+        if (error.response.status === 500) {
+          this.setState({ error: 2 });
+        } else if (error.response.data.message === 'Validation error') {
+          this.setState({ error: 3 });
+        }
       });
   }
 
   render() {
     if (this.state.token) {
       return <Redirect to='/todos' />;
+    }
+
+    let errorMsg;
+    if (this.state.error === 2) {
+      errorMsg = (
+        <div className='error message'>
+          Could not connect to server please try again in a few minutes.
+        </div>
+      );
+    } else if (this.state.error === 3) {
+      errorMsg = <div className='error message'>Wrong password or email.</div>;
     }
 
     return (
@@ -67,11 +79,10 @@ class Login extends React.Component {
             handleSubmit={this.handleSubmit}
             handleInput={this.handleInput}
             submitButtonText='Login'
+            error={this.state.error}
           />
 
-          {this.state.error && (
-            <div className='error message '>Invalid email or password!</div>
-          )}
+          {errorMsg}
         </div>
       </>
     );

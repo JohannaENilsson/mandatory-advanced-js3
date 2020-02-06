@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from './Form';
 
-import { PostAxiosRegister, PostAxiosAuth } from './Axios';
+import { PostAxiosRegister } from './Axios';
 import { Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
@@ -31,12 +31,12 @@ class CreateAccount extends React.Component {
 
     PostAxiosRegister(email, password)
       .then(resp => {
-        console.log(resp.status);
         this.setState({ redirect: true });
       })
       .catch(error => {
-        console.log(error.response.data);
-        if (error.response.data.message === 'User with that email address exists') {
+        if (
+          error.response.data.message === 'User with that email address exists'
+        ) {
           this.setState({ error: 0 });
         } else if (error.response.data.message === 'Validation error') {
           this.setState({ error: 1 });
@@ -82,6 +82,7 @@ class CreateAccount extends React.Component {
             handleSubmit={this.handleSubmit}
             handleInput={this.handleInput}
             submitButtonText='Sign up'
+            error={this.state.error}
           />
           {errorMsg}
         </div>
