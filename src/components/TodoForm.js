@@ -17,9 +17,7 @@ export default function TodoForm(props) {
         </label>
       </div>
       <div>
-        <button type='submit' htmlFor='add todo'>
-          Add todo
-        </button>
+        <button type='submit'>Add todo</button>
       </div>
     </form>
   );

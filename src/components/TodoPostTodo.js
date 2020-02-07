@@ -6,7 +6,8 @@ export default class TodoPostTodo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: ''
+      content: '',
+      error: false,
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,19 +30,29 @@ export default class TodoPostTodo extends React.Component {
         this.setState({ content: '' });
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.response.data);
+        this.setState({ error:true });
       });
   }
 
   render() {
+    let msgDoingTodos = '';
+
+    if (this.state.error) {
+      msgDoingTodos = (
+        <div className='error message '>
+          Could not add the todo. Try sign in again.
+        </div>
+      );
+    }
     return (
       <div>
         <TodoForm
           handleInput={this.handleInput}
           handleSubmit={this.handleSubmit}
-          // ButtonText='Add todo'
           content={this.state.content}
         />
+        {msgDoingTodos}
       </div>
     );
   }
