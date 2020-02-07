@@ -8,7 +8,8 @@ class TodosRenderList extends React.Component {
     this.state = {
       todoList: [],
       error: false,
-      loading: true
+      loading: true,
+      deleteError: false,
     };
 
     this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
@@ -27,6 +28,7 @@ class TodosRenderList extends React.Component {
       })
       .catch(error => {
         console.log(error);
+        this.setState({deleteError: true});
       });
   }
   handleUpdate() {
@@ -48,9 +50,6 @@ class TodosRenderList extends React.Component {
   }
 
   render() {
-    console.log(this.state.todoList);
-    console.log(this.state.todoList.length);
-    // console.log(this.state.error);
     let msgDoingTodos = '';
 
     if (this.state.loading) {
@@ -81,8 +80,14 @@ class TodosRenderList extends React.Component {
     if (this.state.error === true && this.state.loading === false) {
       msgDoingTodos = (
         <div className='error message '>
-          {' '}
-          Could not get your todos. Try sign in again.{' '}
+          Could not get your todos. Try sign in again.
+        </div>
+      );
+    }
+    if (this.state.deleteError) {
+      msgDoingTodos = (
+        <div className='error message '>
+          Could not delete the todo. Try sign in again.
         </div>
       );
     }
