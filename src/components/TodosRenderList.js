@@ -9,7 +9,7 @@ class TodosRenderList extends React.Component {
       todoList: [],
       error: false,
       loading: true,
-      deleteError: false,
+      deleteError: false
     };
 
     this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
@@ -23,22 +23,21 @@ class TodosRenderList extends React.Component {
   handleDeleteTodo(id) {
     DeleteAxiosTodo(id)
       .then(resp => {
-        console.log(resp.status);
         this.handleUpdate();
       })
       .catch(error => {
-        console.log(error);
-        this.setState({deleteError: true});
+        this.setState({ deleteError: true });
       });
   }
   handleUpdate() {
     GetAxiosTodo(this.props.token)
       .then(resp => {
         this.setState({ todoList: resp.data.todos, loading: false });
-        console.log(resp.status);
+        if (this.state.todoList.length) {
+          this.props.parentCallback(this.state.todoList.length);
+        }
       })
       .catch(error => {
-        console.log(error);
         this.setState({ error: true, loading: false });
       });
   }
@@ -63,18 +62,23 @@ class TodosRenderList extends React.Component {
     ) {
       msgDoingTodos = (
         <div className='error'>
-          Stop procrastinating... <br/> Start do your todos!
+          Stop procrastinating... <br /> Start do your todos!
         </div>
       );
+    }
+    if (
+      this.state.todoList.length > 19 &&
+      this.state.error === false &&
+      this.state.loading === false
+    ) {
+      msgDoingTodos = <div className='error'>You can't add more todos...</div>;
     }
     if (
       this.state.todoList.length === 0 &&
       this.state.error === false &&
       this.state.loading === false
     ) {
-      msgDoingTodos = (
-        <div className='success'> You have no todos!</div>
-      );
+      msgDoingTodos = <div className='success'> You have no todos!</div>;
     }
 
     if (this.state.error === true && this.state.loading === false) {
@@ -94,12 +98,12 @@ class TodosRenderList extends React.Component {
 
     return (
       <>
-      <div className='todoWrapper'>
-        {msgDoingTodos}
-        <TodoCreateList
-          todoList={this.state.todoList}
-          handleDeleteTodo={this.handleDeleteTodo}
-        />
+        <div className='todoWrapper'>
+          {msgDoingTodos}
+          <TodoCreateList
+            todoList={this.state.todoList}
+            handleDeleteTodo={this.handleDeleteTodo}
+          />
         </div>
       </>
     );

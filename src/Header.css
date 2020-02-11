@@ -31,9 +31,10 @@ header{
     border: none;
     background-color: #ffffff00;
     color: #000080; 
+    cursor: pointer;
   }
   .logoutBtn:hover {
-    color: rgb(255, 186, 37);
+    color: #00008088; 
   }
   
   .nav {
@@ -45,9 +46,10 @@ header{
     margin: 10px;
     line-height: 120px;
     border-radius: 6px;
+    cursor: pointer;
   }
   .nav:hover {
-    color: rgb(255, 186, 37);
+    color: #00008088; 
   }
   
   @media (max-width: 420px){

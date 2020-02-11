@@ -6,6 +6,7 @@ import Todos from './components/Todos';
 import './App.css';
 import './Msg.css';
 import './Header.css';
+import './Animate.css';
 
 import { Route, BrowserRouter as Router, withRouter } from 'react-router-dom';
 
