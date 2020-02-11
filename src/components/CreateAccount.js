@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './Form';
+import Nav from './Nav';
 
 import { PostAxiosRegister } from './Axios';
 import { Redirect } from 'react-router-dom';
@@ -54,19 +55,19 @@ class CreateAccount extends React.Component {
     let errorMsg;
     if (this.state.error === 0) {
       errorMsg = (
-        <div className='error message'>
+        <div className='error'>
           A user with that email address already exists.
         </div>
       );
     } else if (this.state.error === 1) {
       errorMsg = (
-        <div className='error message'>
-          Password must be between 3-40 characters long.
+        <div className='error'>
+          Password must be between <br/>3-40 characters long.
         </div>
       );
     } else if (this.state.error === 2) {
       errorMsg = (
-        <div className='error message'>
+        <div className='error'>
           Could not connect to server please try again in a few minutes.
         </div>
       );
@@ -77,7 +78,11 @@ class CreateAccount extends React.Component {
         <Helmet>
           <title>Create Account</title>
         </Helmet>
+        <header>
+            <Nav />
+          </header>
         <div className='container'>
+        <div className='WrapperForm'>
           <Form
             handleSubmit={this.handleSubmit}
             handleInput={this.handleInput}
@@ -85,6 +90,7 @@ class CreateAccount extends React.Component {
             error={this.state.error}
           />
           {errorMsg}
+          </div>
         </div>
       </>
     );

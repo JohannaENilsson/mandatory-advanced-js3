@@ -31,7 +31,7 @@ class TodoLogout extends React.Component {
       if(!this.state.token){
           return <Redirect to='/' />
       }
-    return <button type='submit' onClick={this.handleLogOut}>Log Out</button>;
+    return <button type='submit' onClick={this.handleLogOut} className='logoutBtn'>Log Out</button>;
   }
 }
 

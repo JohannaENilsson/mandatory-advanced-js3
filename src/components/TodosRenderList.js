@@ -53,7 +53,7 @@ class TodosRenderList extends React.Component {
     let msgDoingTodos = '';
 
     if (this.state.loading) {
-      msgDoingTodos = <div className='loading message'> Loading... </div>;
+      msgDoingTodos = <div className='loading'> Loading... </div>;
     }
 
     if (
@@ -62,8 +62,8 @@ class TodosRenderList extends React.Component {
       this.state.loading === false
     ) {
       msgDoingTodos = (
-        <div className='error message '>
-          Stop procrastinating.... Start do your todos!
+        <div className='error'>
+          Stop procrastinating... <br/> Start do your todos!
         </div>
       );
     }
@@ -73,20 +73,20 @@ class TodosRenderList extends React.Component {
       this.state.loading === false
     ) {
       msgDoingTodos = (
-        <div className='success message '> You have no todos!</div>
+        <div className='success'> You have no todos!</div>
       );
     }
 
     if (this.state.error === true && this.state.loading === false) {
       msgDoingTodos = (
-        <div className='error message '>
+        <div className='error'>
           Could not get your todos. Try sign in again.
         </div>
       );
     }
     if (this.state.deleteError) {
       msgDoingTodos = (
-        <div className='error message '>
+        <div className='error'>
           Could not delete the todo. Try sign in again.
         </div>
       );
@@ -94,11 +94,13 @@ class TodosRenderList extends React.Component {
 
     return (
       <>
+      <div className='todoWrapper'>
         {msgDoingTodos}
         <TodoCreateList
           todoList={this.state.todoList}
           handleDeleteTodo={this.handleDeleteTodo}
         />
+        </div>
       </>
     );
   }

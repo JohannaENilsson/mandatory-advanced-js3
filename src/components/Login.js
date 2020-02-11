@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './Form';
+import Nav from './Nav';
 import { PostAxiosAuth } from './Axios';
 
 import { Redirect } from 'react-router-dom';
@@ -47,7 +48,8 @@ class Login extends React.Component {
       .catch(error => {
         if (error.response.status === 500) {
           this.setState({ error: 2 });
-        } else if (error.response.data.message === 'Validation error') {
+        }
+        if (error.response.status === 401) {
           this.setState({ error: 3 });
         }
       });
@@ -61,12 +63,12 @@ class Login extends React.Component {
     let errorMsg;
     if (this.state.error === 2) {
       errorMsg = (
-        <div className='error message'>
+        <div className='error'>
           Could not connect to server please try again in a few minutes.
         </div>
       );
     } else if (this.state.error === 3) {
-      errorMsg = <div className='error message'>Wrong password or email.</div>;
+      errorMsg = <div className='error'>Wrong password or email.</div>;
     }
 
     return (
@@ -74,15 +76,20 @@ class Login extends React.Component {
         <Helmet>
           <title>Login</title>
         </Helmet>
-        <div className='container'>
-          <Form
-            handleSubmit={this.handleSubmit}
-            handleInput={this.handleInput}
-            submitButtonText='Login'
-            error={this.state.error}
-          />
-
-          {errorMsg}
+        <header>
+          <Nav />
+        </header>
+        
+          <div className='container'>
+          <div className='WrapperForm'>
+            <Form
+              handleSubmit={this.handleSubmit}
+              handleInput={this.handleInput}
+              submitButtonText='Login'
+              error={this.state.error}
+            />
+            {errorMsg}
+          </div>
         </div>
       </>
     );

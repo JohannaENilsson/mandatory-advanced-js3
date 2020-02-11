@@ -1,0 +1,53 @@
+
+header{
+    background-color: rgba(255, 255, 255, 0.801);
+    font-weight: bold;
+    height: 120px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .todoHeader {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 0 0 50px;
+  }
+  h1 {
+    text-align: left;
+    font-family: 'Permanent Marker', cursive;
+    font-weight: lighter;
+    font-size: 1.5rem;
+    /* padding-left: 1rem;
+    padding-top: 0.5rem; */
+    color: #000080;
+    /* margin-block-start: 0;
+    margin-block-end:0; */
+  }
+  .logoutBtn{
+    /* font-family: 'Permanent Marker', cursive;
+    font-weight: lighter;
+    text-align: left;
+    font-size: 1rem;
+    padding-left: 1rem;
+    border: none;
+    background-color: #ffffff00;*/
+    color: #000080; 
+  }
+  .logoutBtn:hover {
+    color: rgb(255, 186, 37);
+  }
+  
+  .nav {
+    font-family: 'Permanent Marker', cursive;
+    color: #000080;
+    font-size: 2rem;
+    padding: 10px;
+    text-decoration: none;
+    margin: 10px;
+    line-height: 120px;
+    border-radius: 6px;
+  }
+  .nav:hover {
+    color: rgb(255, 186, 37);
+  }
+  

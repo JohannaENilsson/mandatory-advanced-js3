@@ -42,11 +42,14 @@ class Todos extends React.Component {
         <Helmet>
           <title>Todos</title>
         </Helmet>
+        <header>
         <TodoHeader token={this.state.token} />
+        </header>
 
         <div className='container'>
+        <div className='WrapperForm'>
           <TodoPostTodo parentCallback={this.passingData} />
-          
+          </div>
           <TodosRenderList
             token={this.state.token}
             renderAgain={this.state.renderAgain}
