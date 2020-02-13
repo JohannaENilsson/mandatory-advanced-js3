@@ -8,7 +8,6 @@ class TodoLogout extends React.Component {
     this.state = {
       token: token$.value
     };
-
     this.handleLogOut = this.handleLogOut.bind(this);
   }
 
@@ -24,7 +23,6 @@ class TodoLogout extends React.Component {
 
   handleLogOut() {
     updateToken(null);
-    console.log('click', this.state.token);
   }
 
   render() {

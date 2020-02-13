@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoForm from './TodoForm';
 import { PostAxiosTodo } from './Axios';
+import {updateToken} from './Store';
 
 export default class TodoPostTodo extends React.Component {
   constructor(props) {
@@ -38,6 +39,9 @@ export default class TodoPostTodo extends React.Component {
             })
             .catch(err => {
               this.setState({ error: 2 });
+              setTimeout(() => {
+                updateToken(null);
+              }, 4000);
             });
         }
       }
@@ -56,7 +60,7 @@ export default class TodoPostTodo extends React.Component {
       );
     } else if (this.state.error === 2) {
       msgDoingTodos = (
-        <div className='error'>Could not add the todo. Try sign in again.</div>
+        <div className='error'>You are not logged in anymore, you will be redirected.</div>
       );
     }
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoCreateList from './TodoCreateList';
 import { GetAxiosTodo, DeleteAxiosTodo } from './Axios';
-import { Redirect } from 'react-router-dom';
+import {updateToken} from './Store';
 
 class TodosRenderList extends React.Component {
   constructor(props) {
@@ -27,7 +27,6 @@ class TodosRenderList extends React.Component {
         this.handleUpdate();
       })
       .catch(error => {
-        console.log(error.response.data);
         this.setState({ deleteError: true });
         setTimeout(() => {
           this.setState({ deleteError: false });
@@ -44,6 +43,10 @@ class TodosRenderList extends React.Component {
       })
       .catch(error => {
         this.setState({ error: true, loading: false });
+        setTimeout(() => {
+          updateToken(null);
+        }, 4000);
+        
       });
   }
 
@@ -89,11 +92,10 @@ class TodosRenderList extends React.Component {
     if (this.state.error === true && this.state.loading === false) {
       msgDoingTodos = (
         <div className='error'>
-          Could not get your todos. Try sign in again.
+          You are not logged in anymore, you will be redirected.
         </div>
-        
       );
-      return <Redirect to='/' />;
+
     }
     if (this.state.deleteError) {
       msgDoingTodos = (
