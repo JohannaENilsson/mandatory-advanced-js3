@@ -11,13 +11,13 @@ class TodoLogout extends React.Component {
     this.handleLogOut = this.handleLogOut.bind(this);
   }
 
-  componentDidMount(){
-    this.subscription = token$.subscribe( token => {
+  componentDidMount() {
+    this.subscription = token$.subscribe(token => {
       this.setState({ token });
     });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.subscription.unsubscribe();
   }
 
@@ -26,10 +26,14 @@ class TodoLogout extends React.Component {
   }
 
   render() {
-      if(!this.state.token){
-          return <Redirect to='/' />
-      }
-    return <button type='submit' onClick={this.handleLogOut} className='logoutBtn'>Log Out</button>;
+    if (!this.state.token) {
+      return <Redirect to='/' />;
+    }
+    return (
+      <button type='submit' onClick={this.handleLogOut} className='logoutBtn'>
+        Log Out
+      </button>
+    );
   }
 }
 

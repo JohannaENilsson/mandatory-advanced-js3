@@ -1,14 +1,13 @@
 import React from 'react';
 import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
-
 import Todos from './components/Todos';
 import './App.css';
 import './Msg.css';
 import './Header.css';
 import './Animate.css';
 
-import { Route, BrowserRouter as Router, withRouter } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 class App extends React.Component {
   render() {
@@ -19,7 +18,6 @@ class App extends React.Component {
           <Route path='/create-account' component={CreateAccount} />
           <Route path='/todos' component={Todos} />
         </Router>
-
       </div>
     );
   }

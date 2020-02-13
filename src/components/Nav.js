@@ -5,7 +5,7 @@ class Nav extends React.Component {
   render() {
     return (
       <>
-      <h1>What to do?</h1>
+        <h1>What to do?</h1>
         <Link className='nav' to='/'>
           Login
         </Link>

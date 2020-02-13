@@ -21,8 +21,10 @@ class TodoHeader extends React.Component {
     return (
       <>
         <div className='todoHeader'>
-        <h1>What to do? <br/>
-          {this.state.email}</h1>
+          <h1>
+            What to do? <br />
+            {this.state.email}
+          </h1>
           <TodoLogout />
         </div>
       </>

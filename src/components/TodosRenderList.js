@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoCreateList from './TodoCreateList';
 import { GetAxiosTodo, DeleteAxiosTodo } from './Axios';
-import {updateToken} from './Store';
+import { updateToken } from './Store';
 
 class TodosRenderList extends React.Component {
   constructor(props) {
@@ -46,7 +46,6 @@ class TodosRenderList extends React.Component {
         setTimeout(() => {
           updateToken(null);
         }, 4000);
-        
       });
   }
 
@@ -95,14 +94,9 @@ class TodosRenderList extends React.Component {
           You are not logged in anymore, you will be redirected.
         </div>
       );
-
     }
     if (this.state.deleteError) {
-      msgDoingTodos = (
-        <div className='error'>
-          Todo is already deleted.
-        </div>
-      );
+      msgDoingTodos = <div className='error'>Todo is already deleted.</div>;
     }
 
     return (

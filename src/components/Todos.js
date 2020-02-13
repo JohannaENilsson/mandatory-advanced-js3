@@ -6,7 +6,7 @@ import TodoPostTodo from './TodoPostTodo.js';
 
 import { Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { token$, updateToken } from './Store';
+import { token$ } from './Store';
 
 class Todos extends React.Component {
   constructor(props) {

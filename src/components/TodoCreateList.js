@@ -4,7 +4,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 export default function TodoCreateList(props) {
   const todoList = props.todoList.map(todo => {
     return (
-      <CSSTransition key={todo.id} timeout={801} classNames='todo todoAnimate'>
+      <CSSTransition key={todo.id} timeout={800} classNames='todo todoAnimate'>
       <div className='todo'>
         <span>{todo.content} </span>
         <button className='deleteBtn'
