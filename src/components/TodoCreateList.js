@@ -21,7 +21,7 @@ export default function TodoCreateList(props) {
 
   return ( 
   <div className='todoContainer'>
-    <TransitionGroup>
+    <TransitionGroup className='todoContainer'>
     {todoList}
     </TransitionGroup>
     </div>

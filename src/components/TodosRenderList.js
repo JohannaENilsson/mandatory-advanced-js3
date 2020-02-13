@@ -26,6 +26,7 @@ class TodosRenderList extends React.Component {
         this.handleUpdate();
       })
       .catch(error => {
+        console.log(error.response.data);
         this.setState({ deleteError: true });
       });
   }
