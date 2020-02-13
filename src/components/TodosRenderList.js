@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoCreateList from './TodoCreateList';
 import { GetAxiosTodo, DeleteAxiosTodo } from './Axios';
+import { Redirect } from 'react-router-dom';
 
 class TodosRenderList extends React.Component {
   constructor(props) {
@@ -28,6 +29,9 @@ class TodosRenderList extends React.Component {
       .catch(error => {
         console.log(error.response.data);
         this.setState({ deleteError: true });
+        setTimeout(() => {
+          this.setState({ deleteError: false });
+        }, 2500);
       });
   }
   handleUpdate() {
@@ -87,12 +91,14 @@ class TodosRenderList extends React.Component {
         <div className='error'>
           Could not get your todos. Try sign in again.
         </div>
+        
       );
+      return <Redirect to='/' />;
     }
     if (this.state.deleteError) {
       msgDoingTodos = (
         <div className='error'>
-          Could not delete the todo. Try sign in again.
+          Todo is already deleted.
         </div>
       );
     }
